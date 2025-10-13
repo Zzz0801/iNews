@@ -1,0 +1,18 @@
+{
+  "name": "toutiao-clone",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.7",
+    "newsapi": "^2.4.1",
+    "node-fetch": "^3.3.2",
+    "https-proxy-agent": "^7.0.2"
+  }
+}
