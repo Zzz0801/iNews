@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "username": "zzy",
+      "password": "111"
+    }
+  ],
+  "likesDB": {
+    "news_tech_1_0": {
+      "count": 1,
+      "users": [
+        "zzy"
+      ]
+    },
+    "news_tech_1_1": {
+      "count": 1,
+      "users": [
+        "zzy"
+      ]
+    },
+    "news_sports_1_0": {
+      "count": 0,
+      "users": []
+    },
+    "news_sports_1_1": {
+      "count": 0,
+      "users": []
+    },
+    "news_news_1_0": {
+      "count": 1,
+      "users": [
+        "zzy"
+      ]
+    }
+  }
+}

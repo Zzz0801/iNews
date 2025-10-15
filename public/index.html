@@ -3,23 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>今日头条·简版</title>
+    <title>今日洋闻</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">今日头条·简版</div>
+      <div class="brand">今日洋闻</div>
       <form id="searchForm" class="search">
         <input id="q" placeholder="搜索热点 / 话题 / 文章" />
         <button type="submit">搜索</button>
       </form>
+        <div id="userInfo" class="user-info"></div>
     </header>
 
     <nav id="tabs" class="tabs"></nav>
 
     <main class="layout">
-      <section class="feed" id="feed"></section>
-      <div id="feedEmpty" class="empty" style="display:none;">暂无数据</div>
+      <section class="feed" id="feed">
+        <div id="feedEmpty" class="empty" style="display:none;">暂无数据</div>
+        <div id="loader" class="loader" style="display:none;" aria-hidden="true">
+          <div class="spinner"></div>
+        </div>
+        <div id="noMore" class="no-more" style="display:none;">没有更多了</div>
+      </section>
       <aside class="sidebar">
         <h3>热榜</h3>
         <ul id="trending" class="trending"></ul>
@@ -27,12 +33,13 @@
       </aside>
     </main>
 
-    <footer class="footer">© 2025 今日头条·练习项目</footer>
+    <footer class="footer">© 2025 今日洋闻</footer>
 
     <template id="cardTpl">
       <article class="card">
         <img class="cover" />
         <div class="meta">
+          <div class="cat"> </div>
           <h4 class="title"></h4>
           <p class="summary"></p>
           <div class="info">

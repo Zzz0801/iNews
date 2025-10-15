@@ -1,25 +1,88 @@
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-.topbar{position:sticky;top:0;z-index:10;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #eee;background:#fff}
-.brand{font-weight:700;color:#e60000}
+.root{--bg:#f5f7fb;--card:#ffffff;--accent:#e60000;--muted:#888;--max-width:1200px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg)}
+.topbar{position:sticky;top:0;z-index:10;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;background:var(--card)}
+.brand{font-weight:800;color:var(--accent);font-size:18px}
 .search{display:flex;gap:8px}
-.search input{width:36vw;max-width:420px;padding:8px 10px;border:1px solid #ddd;border-radius:6px}
-.search button{padding:8px 12px;border:1px solid #e60000;background:#e60000;color:#fff;border-radius:6px;cursor:pointer}
+.search input{width:36vw;max-width:420px;padding:8px 12px;border:1px solid #eee;border-radius:8px;background:#fbfbfd}
+.search button{padding:8px 12px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:8px;cursor:pointer}
 .tabs{display:flex;gap:10px;overflow:auto;padding:10px 16px;border-bottom:1px solid #eee;background:#fff}
 .tabs .tab{padding:6px 12px;border-radius:16px;border:1px solid #ddd;cursor:pointer;white-space:nowrap}
 .tabs .tab.active{background:#e60000;color:#fff;border-color:#e60000}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;padding:16px;max-width:1200px;margin:0 auto}
-.feed{display:flex;flex-direction:column;gap:12px}
-.card{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px;padding:12px;border:1px solid #eee;border-radius:10px;background:#fff}
-.card .cover{width:200px;height:120px;object-fit:cover;border-radius:8px;background:#f6f6f6}
+.tabs .tab:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.06)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;padding:20px;max-width:var(--max-width);margin:18px auto}
+.feed{display:flex;flex-direction:column;gap:14px}
+.card{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:14px;border:1px solid #eee;border-radius:12px;background:var(--card)}
+.card .cover{width:180px;height:120px;object-fit:cover;border-radius:10px;background:#f6f6f6}
 .card .title{margin:0;font-size:18px}
 .card .summary{margin:6px 0 10px;color:#555}
 .card .info{display:flex;align-items:center;gap:12px;color:#888}
-.sidebar{position:sticky;top:70px;height:calc(100vh - 90px);overflow:auto}
+
+.card .cat{
+  display:inline-block;
+  font-size:12px;
+  color:#fff;
+  background:#999;
+  padding:4px 8px;
+  border-radius:12px;
+  margin-bottom:8px;
+}
+
+.card .cat.tech{background:#0070f3}
+.card .cat.china{background:#ff7a00}
+.card .cat.world{background:#0a9d58}
+.card .cat.sports{background:#e91e63}
+.card .cat.news{background:#6a5acd}
+.sidebar{position:sticky;top:80px;height:calc(100vh - 110px);overflow:auto}
 .trending{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .trending li{display:flex;gap:10px;align-items:center}
-.trending a{color:inherit;text-decoration:none}
+.trend-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px}
+.trend-link{flex:1;color:inherit;text-decoration:none;font-size:14px}
+.trend-item:hover{background:linear-gradient(90deg, rgba(230,0,0,0.03), rgba(0,0,0,0.02))}
+
+.trend-actions{margin-left:8px;display:flex;gap:6px;align-items:center}
+.trend-like{background:transparent;border:1px solid #eee;padding:6px 8px;border-radius:8px;cursor:pointer;color:#e60000}
+.trend-like .trend-likes{margin-left:6px;color:#333}
+.trend-like.liked{background:#e60000;color:#fff;border-color:#e60000}
 .footer{padding:20px;text-align:center;color:#888}
-@media (max-width: 900px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}}
+/* Keep sidebar on the right at all widths (non-responsive) */
+/* If you want mobile-friendly behavior later, consider adding a drawer or smaller breakpoint */
+.layout{grid-template-columns:minmax(0,1fr) 320px}
+.sidebar{position:sticky;top:80px;height:calc(100vh - 110px);overflow:auto}
 .empty{padding:16px;color:#999;text-align:center}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-info button {
+  background: #e60000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.user-info button:hover { background:#c20000 }
+
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* placeholder image */
+.cover.placeholder{background:linear-gradient(90deg,#f2f2f2,#ececec,#f2f2f2);height:120px}
+
+/* loader */
+.loader{display:flex;justify-content:center;padding:12px}
+.spinner{width:32px;height:32px;border-radius:50%;border:4px solid rgba(0,0,0,0.08);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.no-more{padding:12px;text-align:center;color:var(--muted)}
 
 
