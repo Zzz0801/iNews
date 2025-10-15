@@ -19,13 +19,12 @@
     <nav id="tabs" class="tabs"></nav>
 
     <main class="layout">
-      <section class="feed" id="feed">
-        <div id="feedEmpty" class="empty" style="display:none;">暂无数据</div>
-        <div id="loader" class="loader" style="display:none;" aria-hidden="true">
-          <div class="spinner"></div>
-        </div>
-        <div id="noMore" class="no-more" style="display:none;">没有更多了</div>
-      </section>
+      <section class="feed" id="feed"></section>
+      <div id="feedEmpty" class="empty" style="display:none;">暂无数据</div>
+      <div id="loader" class="loader" style="display:none;" aria-hidden="true">
+        <div class="spinner"></div>
+      </div>
+      <div id="noMore" class="no-more" style="display:none;">没有更多了</div>
       <aside class="sidebar">
         <h3>热榜</h3>
         <ul id="trending" class="trending"></ul>
@@ -36,7 +35,7 @@
     <footer class="footer">© 2025 今日洋闻</footer>
 
     <template id="cardTpl">
-      <article class="card">
+      <article class="card" data-id="">
         <img class="cover" />
         <div class="meta">
           <div class="cat"> </div>
@@ -44,11 +43,44 @@
           <p class="summary"></p>
           <div class="info">
             <span class="time"></span>
-            <button class="like">❤ <span class="likes">0</span></button>
+            <div class="card-actions">
+              <button class="like">❤ <span class="likes">0</span></button>
+              <button class="comment-btn">💬</button>
+            </div>
           </div>
         </div>
       </article>
     </template>
+
+    <!-- Article detail modal -->
+    <div id="articleModal" class="modal" style="display:none;" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button id="modalClose" class="modal-close">×</button>
+        <div class="article-detail">
+          <div class="article-main">
+            <img id="modalCover" class="modal-cover" />
+            <h2 id="modalTitle"></h2>
+            <div id="modalMeta" class="modal-meta"></div>
+            <p id="modalSummary" class="modal-summary"></p>
+            <div class="modal-actions">
+              <a id="openOriginal" class="btn" target="_blank">查看原文</a>
+              <div id="modalAuth" class="modal-auth" style="display:none;margin-left:12px"></div>
+            </div>
+          </div>
+          <aside class="comments-column">
+            <h4>评论</h4>
+            <ul id="commentList" class="comment-list"></ul>
+            <div class="comment-form">
+              <textarea id="commentText" placeholder="写下你的评论..." rows="3"></textarea>
+              <div class="comment-actions">
+                <button id="submitComment" class="btn primary">发表评论</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
 
     <script src="/app.js" type="module"></script>
   </body>

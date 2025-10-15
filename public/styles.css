@@ -11,11 +11,15 @@
 .tabs .tab:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.06)}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;padding:20px;max-width:var(--max-width);margin:18px auto}
 .feed{display:flex;flex-direction:column;gap:14px}
-.card{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:14px;border:1px solid #eee;border-radius:12px;background:var(--card)}
+.card{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:14px;border:1px solid #eee;border-radius:12px;background:var(--card);background-color:rgba(255,255,255,1)}
 .card .cover{width:180px;height:120px;object-fit:cover;border-radius:10px;background:#f6f6f6}
 .card .title{margin:0;font-size:18px}
 .card .summary{margin:6px 0 10px;color:#555}
 .card .info{display:flex;align-items:center;gap:12px;color:#888}
+
+.card-actions{display:flex;align-items:center;gap:6px}
+.card-actions .comment-btn{border:1px solid #eee;background:#fff;padding:6px 8px;border-radius:8px;cursor:pointer}
+.card-actions .comment-btn:hover{background:#f5f5f5}
 
 .card .cat{
   display:inline-block;
@@ -84,5 +88,61 @@
 @keyframes spin{to{transform:rotate(360deg)}}
 
 .no-more{padding:12px;text-align:center;color:var(--muted)}
+
+/* Modal / article detail */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:1200}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.45);z-index:1200}
+.modal-content{position:relative;background-color:#ffffff;color:#111;z-index:1201;width:min(900px,95vw);max-height:90vh;overflow:auto;border-radius:12px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,0.25)}
+.modal-close{position:absolute;right:12px;top:12px;border:none;background:rgba(255,255,255,0.95);font-size:20px;cursor:pointer;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.15);z-index:1203}
+.modal-cover{width:100%;max-height:320px;object-fit:cover;border-radius:8px;background:#f6f6f6;margin-bottom:12px}
+.modal-meta{color:var(--muted);margin-bottom:8px}
+.modal-summary{color:#444}
+.modal-actions{margin:12px 0}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;text-decoration:none;color:inherit}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.comments-section{margin-top:18px}
+.comment-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.comment-item{padding:8px;border:1px solid #eee;border-radius:8px;background:#fafafa}
+.comment-meta{font-size:12px;color:var(--muted);margin-bottom:6px}
+.comment-text{white-space:pre-wrap;color:#222}
+.comment-form{margin-top:8px;padding:8px 0;background:transparent}
+.comment-form textarea{width:100%;padding:10px;border:1px solid #eee;border-radius:8px}
+/* inline comment form: textarea + submit button side-by-side */
+
+/* inline comment form: textarea + submit button side-by-side, sticky to modal bottom */
+.comment-form{display:flex;gap:8px;align-items:flex-end;margin-top:8px;position:sticky;bottom:0;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95));padding:10px 0 12px;z-index:1225;border-top:1px solid #f0f0f0}
+.comment-form textarea{flex:1;min-height:64px}
+.comment-actions{display:flex;align-items:center}
+.comment-actions .btn.primary{padding:10px 14px;font-weight:600;background:var(--accent);color:#000;border-color:var(--accent);border-radius:8px}
+
+/* Ensure adequate contrast when using colored backgrounds — prefer near-black text */
+.comment-actions .btn.primary, .comment-actions .btn.primary:disabled{color:rgba(0,0,0,0.9)}
+.comment-actions .btn.primary:hover{filter:brightness(0.95)}
+
+/* ensure modal has ample bottom padding so comment form is not clipped and button visible */
+.modal-content{padding-bottom:92px}
+
+/* on narrow screens make submit button full width for easier tap */
+@media (max-width: 520px){
+  .comment-actions{justify-content:center}
+  .comment-actions .btn.primary{width:100%;min-width:0}
+}
+
+/* fixed bottom comment bar (appears above modal backdrop) */
+/* removed floating bottom bar - submit button now inline next to textarea */
+
+/* two-column modal: article main + comments column */
+.article-detail{display:flex;gap:18px}
+.article-main{flex:1;min-width:0}
+.comments-column{width:320px;max-height:70vh;overflow:auto;padding-left:12px;border-left:1px solid #f0f0f0}
+.comments-column h4{margin-top:0}
+.comment-list{display:flex;flex-direction:column;gap:10px;padding:0;margin:0}
+.comment-list .comment-item{margin:0}
+
+@media (max-width: 900px){
+  .article-detail{flex-direction:column}
+  .comments-column{width:100%;max-height:40vh;border-left:none;border-top:1px solid #f0f0f0}
+}
 
 

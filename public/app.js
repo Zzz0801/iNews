@@ -65,6 +65,8 @@ function renderTabs(categories){
 
 function makeCard(a){
   const node = cardTpl.content.firstElementChild.cloneNode(true);
+  // set stable data-id for easy lookup
+  try { node.setAttribute('data-id', a.id || ''); } catch(e){}
   const coverEl = node.querySelector('.cover');
   if (a.cover) {
     coverEl.src = a.cover;
@@ -86,11 +88,10 @@ function makeCard(a){
   node.querySelector('.time').textContent = timeFromNow(a.publishedAt);
   node.querySelector('.likes').textContent = a.likes || 0;
   const open = () => {
-    if(a.url){ window.open(a.url, '_blank'); }
-    else openDetail(a.id);
+    openDetail(a.id);
   };
-  node.querySelector('.cover').onclick = () => window.open(a.url, '_blank');
-  node.querySelector('.title').onclick = () => window.open(a.url, '_blank');
+  node.querySelector('.cover').onclick = open;
+  node.querySelector('.title').onclick = open;
 
   // 点赞逻辑
   node.querySelector('.like').onclick = async () => {
@@ -109,6 +110,15 @@ function makeCard(a){
       alert('点赞失败：' + e.message);
     }
   };
+  const cbtn = node.querySelector('.comment-btn');
+  if (cbtn) {
+    cbtn.onclick = () => {
+      openDetail(a.id).then(() => {
+        const ta = document.getElementById('commentText');
+        if (ta) ta.focus();
+      }).catch(() => {});
+    };
+  }
   return node;
 
 }
@@ -357,9 +367,225 @@ async function renderTrending(){
 }
 
 async function openDetail(id){
-  const a = await fetchJSON(`/api/articles/${id}`);
-  alert(`${a.title}\n\n${a.content || ''}`);
+  // show modal
+  const modal = document.getElementById('articleModal');
+  const modalCover = document.getElementById('modalCover');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalMeta = document.getElementById('modalMeta');
+  const modalSummary = document.getElementById('modalSummary');
+  const openOriginal = document.getElementById('openOriginal');
+  const commentList = document.getElementById('commentList');
+  const commentText = document.getElementById('commentText');
+  const submitComment = document.getElementById('submitComment');
+
+  try {
+    const a = await fetchJSON(`/api/articles/${encodeURIComponent(id)}`);
+    modalCover.src = a.cover || '';
+    // modal like button
+    let modalLike = document.getElementById('modalLike');
+    if (!modalLike) {
+      modalLike = document.createElement('button');
+      modalLike.id = 'modalLike';
+      modalLike.className = 'btn';
+      modalLike.textContent = `❤ ${a.likes || 0}`;
+      const actionsWrap = document.querySelector('.modal-actions');
+      if (actionsWrap) actionsWrap.insertBefore(modalLike, actionsWrap.firstChild || null);
+    } else {
+      modalLike.textContent = `❤ ${a.likes || 0}`;
+    }
+    modalLike.onclick = async () => {
+      if (!currentUser) { alert('请先登录'); return; }
+      try {
+        modalLike.disabled = true;
+        const r = await fetchJSON(`/api/articles/${encodeURIComponent(id)}/like`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: currentUser })
+        });
+        modalLike.textContent = `❤ ${r.likes}`;
+        // sync with card in feed using data-id
+        const card = document.querySelector(`.card[data-id="${id}"]`);
+        if (card) {
+          const likesEl = card.querySelector('.likes');
+          if (likesEl) likesEl.textContent = r.likes;
+        }
+      } catch (e) {
+        alert('点赞失败：' + (e.message || e));
+      } finally { modalLike.disabled = false; }
+    };
+    modalTitle.textContent = a.title || '';
+    modalMeta.textContent = `${a.source || ''} · ${a.publishedAt ? new Date(a.publishedAt).toLocaleString() : ''} · ${a.likes || 0}❤`;
+    modalSummary.textContent = a.summary || '';
+    if (a.url) {
+      openOriginal.href = a.url;
+      openOriginal.style.display = 'inline-block';
+    } else {
+      openOriginal.style.display = 'none';
+    }
+
+  // load comments
+    commentList.innerHTML = '<li class="comment-item">加载中...</li>';
+    try {
+      // include currentUser so server can mark which comments are liked by this user
+      const cc = await fetchJSON(`/api/articles/${encodeURIComponent(id)}/comments${currentUser ? `?username=${encodeURIComponent(currentUser)}` : ''}`);
+      const items = cc.items || [];
+      if (!items.length) {
+        commentList.innerHTML = '<li class="comment-item">暂无评论</li>';
+      } else {
+        commentList.innerHTML = items.map(it => {
+          const likedCls = it.liked ? 'comment-liked' : '';
+          const likes = it.likes || 0;
+          return `
+            <li class="comment-item" data-comment-id="${it.id}">
+              <div class="comment-meta">${it.username} · ${new Date(it.createdAt).toLocaleString()}</div>
+              <div class="comment-text">${escapeHtml(it.text)}</div>
+              <div class="comment-row" style="margin-top:8px;display:flex;align-items:center;gap:8px">
+                <button class="btn comment-like ${likedCls}" data-comment-id="${it.id}">❤ <span class="c-likes">${likes}</span></button>
+              </div>
+            </li>`;
+        }).join('');
+      }
+    } catch (e) {
+      commentList.innerHTML = '<li class="comment-item">加载评论失败</li>';
+    }
+
+    // auth hint in modal
+    const modalAuth = document.getElementById('modalAuth');
+    if (modalAuth) {
+      if (!currentUser) {
+        modalAuth.style.display = 'inline-block';
+        modalAuth.innerHTML = `<button id="modalLoginBtn" class="btn">登录以发表评论</button>`;
+        document.getElementById('modalLoginBtn').onclick = async () => {
+          await showLogin();
+          // after login, update UI
+          if (currentUser) {
+            modalAuth.style.display = 'none';
+          }
+        };
+      } else {
+        modalAuth.style.display = 'none';
+      }
+    }
+
+    // ensure comment column visible when modal opens (scroll its inner list)
+    setTimeout(() => {
+      const commentsCol = document.querySelector('.comments-column');
+      if (commentsCol) {
+        // scroll to top of comments column so user sees comment area
+        commentsCol.scrollTop = 0;
+      }
+    }, 120);
+
+    // when textarea focused, scroll it into view
+    commentText.onfocus = () => {
+      setTimeout(()=>{
+        const commentsCol = document.querySelector('.comments-column');
+        if (commentsCol) {
+          // scroll to bottom so textarea and submit button visible
+          commentsCol.scrollTop = commentsCol.scrollHeight;
+        }
+      }, 100);
+    };
+
+    // submit comment
+    submitComment.onclick = async () => {
+      if (!currentUser) { alert('请先登录'); return; }
+      const txt = commentText.value.trim();
+      if (!txt) { alert('评论不能为空'); return; }
+      if (txt.length > 300) { alert('评论不能超过 300 字'); return; }
+      try {
+        submitComment.disabled = true;
+        submitComment.textContent = '提交中...';
+        const r = await fetchJSON(`/api/articles/${encodeURIComponent(id)}/comments`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: currentUser, text: txt })
+        });
+        // append comment to list
+        const it = r.comment;
+  const node = document.createElement('li');
+  node.className = 'comment-item';
+  node.setAttribute('data-comment-id', it.id);
+  node.innerHTML = `<div class="comment-meta">${it.username} · ${new Date(it.createdAt).toLocaleString()}</div><div class="comment-text">${escapeHtml(it.text)}</div><div class="comment-row" style="margin-top:8px;display:flex;align-items:center;gap:8px"><button class="btn comment-like" data-comment-id="${it.id}">❤ <span class="c-likes">0</span></button></div>`;
+        if (commentList.querySelector('.comment-item') && commentList.children.length === 1 && commentList.children[0].textContent === '暂无评论') {
+          commentList.innerHTML = '';
+        }
+        commentList.insertBefore(node, commentList.firstChild);
+        commentText.value = '';
+        // attach click handler to newly added comment-like button
+        const newLikeBtn = node.querySelector('.comment-like');
+        if (newLikeBtn) newLikeBtn.onclick = commentLikeHandler(id);
+      } catch (e) {
+        alert('发表评论失败：' + (e.message || e));
+      } finally {
+        submitComment.disabled = false;
+        submitComment.textContent = '发表评论';
+      }
+    };
+
+    // attach like handlers for existing comment buttons
+    const likeBtns = commentList.querySelectorAll('.comment-like');
+    likeBtns.forEach(btn => { btn.onclick = commentLikeHandler(id); });
+
+    // show
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+  // inline comment button will be displayed next to textarea
+
+  } catch (e) {
+    alert('打开文章失败：' + (e.message || e));
+  }
 }
+
+// modal handlers
+function closeModal(){
+  const modal = document.getElementById('articleModal');
+  if (!modal) return;
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  // remove fixed class
+  const ca = document.querySelector('.comment-actions');
+  if (ca) ca.classList.remove('comment-fixed');
+}
+
+function escapeHtml(s){
+  if(!s) return '';
+  return s.replace(/[&<>\"]/g, (c)=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c] || c));
+}
+
+// returns a click handler bound to article id
+function commentLikeHandler(articleId){
+  return async function(e){
+    e.preventDefault();
+    const btn = e.currentTarget;
+    const commentId = btn.dataset.commentId;
+    if (!currentUser) { alert('请先登录'); return; }
+    try {
+      btn.disabled = true;
+      const r = await fetchJSON(`/api/articles/${encodeURIComponent(articleId)}/comments/${encodeURIComponent(commentId)}/like`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: currentUser })
+      });
+      const likesSpan = btn.querySelector('.c-likes');
+      if (likesSpan) likesSpan.textContent = r.likes;
+      btn.classList.toggle('comment-liked', !!r.liked);
+    } catch (err) {
+      alert('操作失败：' + (err.message || err));
+    } finally {
+      btn.disabled = false;
+    }
+  };
+}
+
+// attach modal event listeners after DOM ready
+waitForDOM().then(() => {
+  const modal = document.getElementById('articleModal');
+  if (!modal) return;
+  const closeBtn = document.getElementById('modalClose');
+  const backdrop = modal.querySelector('.modal-backdrop');
+  closeBtn.onclick = closeModal;
+  backdrop.onclick = closeModal;
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+});
 
 init().catch(err => {
   console.error(err);

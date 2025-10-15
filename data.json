@@ -3,6 +3,18 @@
     {
       "username": "zzy",
       "password": "111"
+    },
+    {
+      "username": "test_user",
+      "password": "pass"
+    },
+    {
+      "username": "yzz",
+      "password": "123"
+    },
+    {
+      "username": "zyz",
+      "password": "123"
     }
   ],
   "likesDB": {
@@ -31,6 +43,291 @@
       "users": [
         "zzy"
       ]
+    },
+    "5d85af3e580ad706bf733eda8f39e341af323df5": {
+      "count": 1,
+      "users": [
+        "zzy"
+      ]
     }
+  },
+  "articleStore": {
+    "5d85af3e580ad706bf733eda8f39e341af323df5": {
+      "id": "5d85af3e580ad706bf733eda8f39e341af323df5",
+      "title": "Authorities identify 16 killed in Tennessee explosives factory blast - BBC",
+      "summary": "A shaken sheriff said that a teacher, a neighbour and one of his best friends were among the victims who died in the blast.",
+      "cover": "https://ichef.bbci.co.uk/news/1024/branded_news/4569/live/cce9af40-a88c-11f0-b741-177e3e2c2fc7.jpg",
+      "category": "news",
+      "publishedAt": "2025-10-13T23:32:08Z",
+      "url": "https://www.bbc.com/news/articles/c98n4g3p1x8o",
+      "source": "BBC News"
+    },
+    "9a8154b19c7647d26ccbfb180c5161ff54f447be": {
+      "id": "9a8154b19c7647d26ccbfb180c5161ff54f447be",
+      "title": "SpaceX launches the 11th test flight of its mega Starship rocket - AP News",
+      "summary": "SpaceX has launched another of its mammoth Starship rockets on a test flight. The 403-foot Starship thundered into the evening sky Monday from Texas. The booster peeled away and made a controlled entry into the Gulf of Mexico as planned, with the spacecraft s…",
+      "cover": "https://dims.apnews.com/dims4/default/7c63231/2147483647/strip/true/crop/6729x3785+0+350/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fe0%2F7f%2F5a6075abc4f4d7c3ab9d35a8280d%2Fda777d87607d407a83283e08c692f970",
+      "category": "news",
+      "publishedAt": "2025-10-13T23:25:00Z",
+      "url": "https://apnews.com/article/spacex-starship-elon-musk-b4ac6a3ff6ecb04100fab1ac7cf832e6",
+      "source": "Associated Press"
+    },
+    "b9c77b725e67e1e901be0e9042077673bb4ea8d4": {
+      "id": "b9c77b725e67e1e901be0e9042077673bb4ea8d4",
+      "title": "Stock futures are little changed after big rebound on Wall Street, S&P 500 posts best day since May: Live updates - CNBC",
+      "summary": "The S&P 500 and Dow each jumped more than 1% on the day, marking the former’s biggest one-day gain since May 27.",
+      "cover": "https://image.cnbcfm.com/api/v1/image/108130210-17443045782025-04-10t170125z_708275486_rc24vdavov8d_rtrmadp_0_usa-stocks.jpeg?v=1744304636&w=1920&h=1080",
+      "category": "news",
+      "publishedAt": "2025-10-13T23:07:00Z",
+      "url": "https://www.cnbc.com/2025/10/13/stock-market-today-live-updates.html",
+      "source": "CNBC"
+    },
+    "af3fb0fb8f98b9e35878ee39bd3de2812ca4f05e": {
+      "id": "af3fb0fb8f98b9e35878ee39bd3de2812ca4f05e",
+      "title": "Bills vs Falcons Prediction, Odds, Picks, Inactives, How to Watch Monday Night Football - Action Network",
+      "summary": "Find Bills vs Falcons predictions, picks and odds for Monday Night Football on October 13.",
+      "cover": "https://images.actionnetwork.com/blog/2025/10/Bills-vs-Falcons.png",
+      "category": "news",
+      "publishedAt": "2025-10-13T22:28:00Z",
+      "url": "https://www.actionnetwork.com/nfl/buffalo-bills-vs-atlanta-falcons-prediction-pick-odds-nfl-monday-night-football-october-13-qs",
+      "source": "The Action Network"
+    },
+    "e4d18aff6eac0a04820404fdcb066038b054c3e9": {
+      "id": "e4d18aff6eac0a04820404fdcb066038b054c3e9",
+      "title": "Scientists identify key reason people may use or get addicted to cannabis - The Washington Post",
+      "summary": "The study builds on growing genetic research into cannabis use, as policymakers grapple with the risks and benefits of the drug’s soaring popularity.",
+      "cover": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/PKF2CPORBKTRNCXOQ3RGUZ5ZTQ_size-normalized.JPG&w=1440",
+      "category": "news",
+      "publishedAt": "2025-10-13T22:12:04Z",
+      "url": "https://www.washingtonpost.com/health/2025/10/13/cannabis-marijuana-addiction-genes-study/",
+      "source": "The Washington Post"
+    },
+    "f83523994cfed36a5cc08f96b5e958d095c7e979": {
+      "id": "f83523994cfed36a5cc08f96b5e958d095c7e979",
+      "title": "‘Locked up for 24 years’: release of Palestinian prisoners and detainees sparks joy and sorrow - The Guardian",
+      "summary": null,
+      "cover": null,
+      "category": "news",
+      "publishedAt": "2025-10-13T21:49:00Z",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOVE5EX0k0aDRlUHJpeE1mS2pRYjlfaHh2U1ZIczc3bENOaGNzZ2Jpb1ItQl9zMmVkLWtFaGFyQnRFMEYzN3ZJaDY5QURQUzJRM2M5X1FKRm9rQkdUY1hYTk1QdF95TmxDbzJJbUFOd3dVeWY0UlFSb3RnM3VkS2ZHOVNrbGpmQQ?oc=5",
+      "source": "Google News"
+    },
+    "4d56cbc1232ea14b1157b6bb065b434d0b07534c": {
+      "id": "4d56cbc1232ea14b1157b6bb065b434d0b07534c",
+      "title": "Lions safety Brian Branch gets 1-game suspension for punching Chiefs' JuJu Smith-Schuster - AP News",
+      "summary": "The NFL has suspended Detroit Lions safety Brian Branch for one game without pay for unsportsmanlike conduct following a loss at Kansas City. Branch punched Chiefs receiver JuJu Smith-Schuster on Sunday night, setting off a brief fight among players from both…",
+      "cover": "https://dims.apnews.com/dims4/default/5befa51/2147483647/strip/true/crop/6000x3375+0+312/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Ff5%2Fc6%2Ff8de22c5d60ae9941306be8256e4%2Fddb4e438a89e4266b8bc75d5ee15e068",
+      "category": "news",
+      "publishedAt": "2025-10-13T21:43:00Z",
+      "url": "https://apnews.com/article/lions-brian-branch-suspended-c064cdb9ab6128601b6c5eb6d8632a25",
+      "source": "Associated Press"
+    },
+    "6fde732ed75b7c9b909d3ae533e1d9d44bf9355e": {
+      "id": "6fde732ed75b7c9b909d3ae533e1d9d44bf9355e",
+      "title": "Julio Rodriguez's three-run HR gives Mariners early ALCS Game 2 lead - ESPN",
+      "summary": "The home run marked the Seattle Mariners center fielder's second of the postseason.",
+      "cover": "https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2025%2F1013%2Fr1559752_1296x729_16%2D9.jpg",
+      "category": "news",
+      "publishedAt": "2025-10-13T21:39:00Z",
+      "url": "https://www.espn.com/mlb/story/_/id/46585927/seattle-mariners-julio-rodriguez-three-run-home-run-alcs-game-2",
+      "source": "ESPN"
+    },
+    "716e2d9384fe2710244d2b340217a07af48f5907": {
+      "id": "716e2d9384fe2710244d2b340217a07af48f5907",
+      "title": "Over 150 unvaccinated kids quarantined for 21 days in SC measles outbreak - Ars Technica",
+      "summary": "The outbreak includes at least seven confirmed cases, but some are clearly being missed.",
+      "cover": "https://cdn.arstechnica.net/wp-content/uploads/2025/02/GettyImages-2152300024-1152x648.jpg",
+      "category": "news",
+      "publishedAt": "2025-10-13T20:48:21Z",
+      "url": "https://arstechnica.com/health/2025/10/over-150-unvaccinated-kids-quarantined-for-21-days-in-sc-measles-outbreak/",
+      "source": "Ars Technica"
+    },
+    "0a4d29996b2ac4e9841756256638804171767272": {
+      "id": "0a4d29996b2ac4e9841756256638804171767272",
+      "title": "American Airlines adding Google Wallet support for boarding passes - 9to5Google",
+      "summary": "American Airlines has just announced that it will support Google Wallet with its boarding passes, an overdue addition for the...",
+      "cover": "https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2025/10/american-airlines.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+      "category": "tech",
+      "publishedAt": "2025-10-13T21:30:00Z",
+      "url": "http://9to5google.com/2025/10/13/american-airlines-adding-google-wallet-support-for-boarding-passes/",
+      "source": "9to5google.com"
+    },
+    "08cdb3a8486afdf8175c1098ac75f48f66744e8e": {
+      "id": "08cdb3a8486afdf8175c1098ac75f48f66744e8e",
+      "title": "Microsoft AI announces first image generator created in-house - The Verge",
+      "summary": "Microsoft AI announced a new text-to-image generator developed in-house.",
+      "cover": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/04/STK095_Microsoft_04.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+      "category": "tech",
+      "publishedAt": "2025-10-13T21:24:05Z",
+      "url": "https://www.theverge.com/news/798923/microsoft-ai-image-generator-in-house",
+      "source": "The Verge"
+    },
+    "dd8c367b0febd28a5860b62f7c8c14b1c728f732": {
+      "id": "dd8c367b0febd28a5860b62f7c8c14b1c728f732",
+      "title": "Apple Pro Display XDR 2 likely has key hardware upgrade over original $4999 monitor - 9to5Mac",
+      "summary": "Apple is expected to release a second-generation Apple Pro Display XDR in the near future, and it looks like it...",
+      "cover": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2024/11/pro-display-xdr.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+      "category": "tech",
+      "publishedAt": "2025-10-13T20:09:00Z",
+      "url": "https://9to5mac.com/2025/10/13/apple-pro-display-xdr-2-will-have-a-key-hardware-upgrade-over-original-4999-monitor/",
+      "source": "9to5Mac"
+    },
+    "79c6efa1a1ee05e89d0b4fdf601961a6f3283626": {
+      "id": "79c6efa1a1ee05e89d0b4fdf601961a6f3283626",
+      "title": "Google’s Nano Banana AI image editor is coming to search, Photos, and NotebookLM - Ars Technica",
+      "summary": "After more than 5 billion AI image edits, Nano Banana is expanding.",
+      "cover": "https://cdn.arstechnica.net/wp-content/uploads/2025/10/BananaLens-2096x1182.width-2200.format-webp-copy-1152x648.jpg",
+      "category": "tech",
+      "publishedAt": "2025-10-13T19:52:23Z",
+      "url": "https://arstechnica.com/google/2025/10/googles-nano-banana-ai-image-editor-is-coming-to-search-photos-and-notebooklm/",
+      "source": "Ars Technica"
+    },
+    "6baa570f408497b0e58ff10b12ae562ee05a2453": {
+      "id": "6baa570f408497b0e58ff10b12ae562ee05a2453",
+      "title": "Google will let you hide sponsored results in search — after you’ve seen them - The Verge",
+      "summary": "Paid results are going to start showing up a little differently on Google search pages.",
+      "cover": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/STK093_Google_04.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+      "category": "tech",
+      "publishedAt": "2025-10-13T19:21:38Z",
+      "url": "https://www.theverge.com/tech/798901/google-will-let-you-hide-sponsored-results-in-search-after-youve-seen-them",
+      "source": "The Verge"
+    },
+    "c622c06b44ecd24a482a5807d7d086571d7e4c2b": {
+      "id": "c622c06b44ecd24a482a5807d7d086571d7e4c2b",
+      "title": "The Final Mega Randoms - Bespoked Show Dresden 2025 - Pinkbike",
+      "summary": "A final round of the creative bike creations on display in Dresden this year.",
+      "cover": "https://ep1.pinkbike.org/p4pb28877204/p4pb28877204.jpg",
+      "category": "tech",
+      "publishedAt": "2025-10-13T19:00:00Z",
+      "url": "https://www.pinkbike.com/news/the-final-mega-randoms-bespoked-show-dresden-2025.html",
+      "source": "Pinkbike.com"
+    },
+    "6f7f8f4cb9b7fe88ed87270bad6a0ba607d88fc8": {
+      "id": "6f7f8f4cb9b7fe88ed87270bad6a0ba607d88fc8",
+      "title": "Microsoft denies U.S. retailers like Target and Walmart have removed Xbox products from stores - GamesIndustry.biz",
+      "summary": "Microsoft has refuted claims U.S. retailers have withdrawn sales of its Xbox Series X and S consoles, insisting major c…",
+      "cover": "https://assetsio.gnwcdn.com/Xbox-Series-X%7CS.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp",
+      "category": "tech",
+      "publishedAt": "2025-10-13T18:47:08Z",
+      "url": "https://www.gamesindustry.biz/microsoft-denies-us-retailers-like-target-and-walmart-have-removed-xbox-products-from-stores",
+      "source": "GamesIndustry.biz"
+    },
+    "50f48a8783bd9562a7928f6113fada934cff3617": {
+      "id": "50f48a8783bd9562a7928f6113fada934cff3617",
+      "title": "iOS 26.1 beta 3 reveals new third-party AI integrations may be coming soon - 9to5Mac",
+      "summary": "Updated code in iOS 26.1 beta 3 reveals Apple is preparing to add at least one new third-party AI integration soon.",
+      "cover": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/09/apple-intelligence-ios-26-04.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+      "category": "tech",
+      "publishedAt": "2025-10-13T18:08:00Z",
+      "url": "https://9to5mac.com/2025/10/13/ios-26-1-beta-3-reveals-new-third-party-ai-integrations-may-be-coming-soon/",
+      "source": "9to5Mac"
+    },
+    "9a9f1dc4ff52f80b564e9d20fa4d43688dcc2d90": {
+      "id": "9a9f1dc4ff52f80b564e9d20fa4d43688dcc2d90",
+      "title": "Microsoft previews People grouping in OneDrive photos - theregister.com",
+      "summary": null,
+      "cover": null,
+      "category": "tech",
+      "publishedAt": "2025-10-13T17:48:00Z",
+      "url": "https://www.theregister.com/2025/10/13/microsoft_face_grouping_ondrive/",
+      "source": "Theregister.com"
+    }
+  },
+  "commentsDB": {
+    "5d85af3e580ad706bf733eda8f39e341af323df5": [
+      {
+        "username": "zzy",
+        "text": "注重在",
+        "createdAt": "2025-10-15T02:03:52.979Z",
+        "id": "2a83b46b7ce49bd33a4da277280c70e5bf9be386",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "啊啊",
+        "createdAt": "2025-10-15T02:30:32.610Z",
+        "id": "b7855c28fe7a150ac138e618043fa3408fee5ff6",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:38.674Z",
+        "id": "b448aa07d33d3c41aa9fc75d276e46a50c8d0cd0",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:39.996Z",
+        "id": "18a646347875ea73dc28bd35c7bf1f263ac38ba4",
+        "likedBy": [],
+        "likes": 0
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:41.183Z",
+        "id": "0b0d6d6bd3de9b0e9e2709e12941f2e62b99b58e",
+        "likedBy": [],
+        "likes": 0
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:42.575Z",
+        "id": "a2e531fc96f030f82b9fb25e979c37c093c967bc",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:43.764Z",
+        "id": "bb97edbb0e4b3591cbf3968eb4b3088cb4750555",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:45.037Z",
+        "id": "987186595c69ea5cc5f0c459d6190e084c9c1691",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:46.193Z",
+        "id": "e2d1aa26a7bd0f7012450da6dd47fb2f57e5a400",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "123",
+        "createdAt": "2025-10-15T02:34:49.150Z",
+        "id": "a69c6d1934c8c7460b1f47d31028ce3033d8a1b0",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "213",
+        "createdAt": "2025-10-15T02:34:52.101Z",
+        "id": "8414db2b51df7c6d7a28f6e76a4ee92246a9c32b",
+        "likedBy": []
+      },
+      {
+        "username": "zyz",
+        "text": "231",
+        "createdAt": "2025-10-15T02:34:53.647Z",
+        "id": "e9ce70d63e6124c6e9c6771b5b6e206129431dca",
+        "likedBy": []
+      }
+    ],
+    "0a4d29996b2ac4e9841756256638804171767272": [
+      {
+        "username": "test_user",
+        "text": "????????????",
+        "createdAt": "2025-10-15T02:16:00.528Z"
+      }
+    ]
   }
 }
